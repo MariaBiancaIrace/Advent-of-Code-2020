@@ -6,7 +6,6 @@ lista_linhas = lista_linhas.replace('\n',' ')
 lista_linhas = lista_linhas.replace('AAAAA','\n').splitlines()
 
 contador_validos = 0
-substring = 'byr'
 
 for linha in lista_linhas:
     if ('byr' in linha and 'iyr' in linha and 'eyr' in linha and 'hgt' in linha and 'hcl' in linha and 'ecl' in linha and 'pid' in linha):
