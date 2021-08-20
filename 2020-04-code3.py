@@ -7,7 +7,6 @@ lista_linhas = lista_linhas.replace('AAAAA','\n').splitlines()
 
 contador_validos = 0
 
-<<<<<<< HEAD
 
 
 for linha in lista_linhas:
@@ -31,11 +30,5 @@ for linha in lista_linhas:
     #if ('byr' in linha and 'iyr' in linha and 'eyr' in linha and 'hgt' in linha and 'hcl' in linha and 'ecl' in linha and 'pid' in linha):
     #    contador_validos += 1
     #    print(linha, contador_validos)
-=======
-for linha in lista_linhas:
-    if ('byr' in linha and 'iyr' in linha and 'eyr' in linha and 'hgt' in linha and 'hcl' in linha and 'ecl' in linha and 'pid' in linha):
-        contador_validos += 1
-        print(linha, contador_validos)
->>>>>>> 34a6f1a2965878a36d914bfb04630e0621dbe9c2
 
 
