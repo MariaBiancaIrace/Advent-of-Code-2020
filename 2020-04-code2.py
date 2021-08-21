@@ -1,3 +1,5 @@
+import string 
+
 with open("2020-04-input.txt") as arquivo:
     lista_linhas = arquivo.read()
 
@@ -20,11 +22,17 @@ for linha in lista_linhas:
             dicionario[chave] = valor
         
         check = all(item in dicionario.keys() for item in lista_itens_validar)
-        if check is True:
-            if (int(dicionario['byr']) in range(1920,2003)) and (int(dicionario['iyr']) in range(2010,2021)) and (int(dicionario['eyr'] in range(2020,2031))):
-                print(dicionario, 'OK')
+        if check:
+            if (int(dicionario['byr']) in range(1920,2003)) and (int(dicionario['iyr']) in range(2010,2021)) and (int(dicionario['eyr']) in range(2020,2031)):
+                if (('in' in dicionario['hgt']) and (int(dicionario['hgt'][:-2]) in range(59,77))) or (('cm' in dicionario['hgt']) and (int(dicionario['hgt'][:-2]) in range(150,194))):
+                    if(('#' in dicionario['hcl']) and all(caracteres in string.hexdigits for caracteres in dicionario['hcl'][1:])):
+                        print(dicionario, 'OK',dicionario['hcl'][1:],len(dicionario['hcl'][1:]))
+                    else:
+                        print(dicionario,'hcl zoado')
+                else:
+                    print(dicionario,'hgt zoado')
             else:
-                print(dicionario,'valor ruim')
+                print(dicionario,'valor ruim byr,iyr ou eyr')
         else:
             print(dicionario,'NOK')
             #total_chave_valor = len(itens.strip().split(':'))
