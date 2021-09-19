@@ -1,3 +1,5 @@
+import string
+
 with open("2020-06-input.txt") as arquivo:
         lista_linhas = arquivo.read()
 
@@ -7,41 +9,23 @@ lista_linhas = lista_linhas.replace('AAAAA','\n').strip().splitlines()
 
 
 set_pessoa = set()
-set_grupo = set()
-
-for linha in lista_linhas:
-    lista_grupo = linha.split(' ')
-    print(lista_grupo)
-    for string_pessoa in lista_grupo:
-        #print(string_pessoa)
-        for letra in string_pessoa:
-            #print(letra, string_pessoa)
-            set_pessoa.add(letra)
-        print(set_pessoa)
-        set_grupo.update(set_pessoa)
-        #print(linha, set_grupo)
-
-
-
-''' 
-set_pessoa = set()
-set_grupo = set()
-
-for letra in lista_linhas:
-    set_pessoa.add(letra)
-    
-lista_linhas = lista_linhas.replace('\n\n','AAAAA')
-        #lista_linhas = lista_linhas.replace('\n','')
-        lista_linhas = lista_linhas.replace('AAAAA','\n').splitlines()
-
 contador = 0
 
 for linha in lista_linhas:
-    set_perguntas = set()
-    for letra in linha:
-        set_perguntas.add(letra)
-        
-    contador = contador + len(set_perguntas)
-    print(linha,set_perguntas,len(set_perguntas),contador) 
+    lista_set_grupo = []
+    lista_string_grupo = linha.split(' ')
+    print(lista_string_grupo)
+    ##['frpcbmnh', 'ohmwzj', 'hvtm']
+    for string_pessoa in lista_string_grupo:
+        set_pessoa = set(string_pessoa)
+        #{'f','r','p'...}
+        lista_set_grupo.append(set_pessoa)
+    print(lista_set_grupo)
+    #[{'f', 'r', 'p',...}, {'o', 'h', 'm',...}, {'h', 'v', 't',...}]
+    set_intersec = set(string.ascii_lowercase)
+    print(set_intersec)
+    for set_pessoa in lista_set_grupo:
+        set_intersec = set_intersec.intersection(set_pessoa)
+    contador = contador + len(set_intersec)
+    print(set_intersec, len(set_intersec),contador)
 
-'''
